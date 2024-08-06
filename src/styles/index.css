@@ -5,3 +5,17 @@
 body {
   @apply bg-background-black-primary text-white; /* Apply Tailwind classes for background and text color */
 }
+
+.gradient-border {
+  border: 2px solid transparent;
+  border-image: linear-gradient(90deg, #969696, #343434) 1;
+  border-radius: 8px;
+}
+
+@layer utilities {
+  .placeholder-style::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    color: #7f8084;
+  }
+}
