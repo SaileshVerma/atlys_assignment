@@ -3,20 +3,21 @@ import Logo from "../assets/logos/Logo";
 
 function App() {
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center text-white gap-8">
+    <div className="flex h-screen w-screen flex-col items-center justify-center text-white gap-10 ">
       <Logo />
-      <div className="flex flex-col gap-5 border rounded-lg items-center justify-center bg-background-black-secondary w-1/3 px-6 py-8">
-        <span className="text-secondary-text-black font-medium text-sm">
-          WELCOME BACK
-        </span>
-        <span className=" font-semibold text-lg">Log into your account</span>
-
-        <div className="flex flex-col self-start gap-2 w-full">
+      <div className="flex flex-col gap-4 border-2 rounded-lg items-center justify-center bg-background-black-secondary w-1/3 px-6 py-8">
+        <div className="flex flex-col gap-1 items-center">
+          <span className="text-secondary-text-black font-medium text-sm">
+            WELCOME BACK
+          </span>
+          <span className=" font-semibold text-lg">Log into your account</span>
+        </div>
+        <div className="flex flex-col self-start gap-2 w-full pt-4">
           <span className="text-grey-1 text-sm font-medium">
             Email or Username
           </span>
           <input
-            className="bg-transparent border border-border-secondary-black rounded p-2 placeholder-style"
+            className="bg-transparent border-[1.5px] border-border-secondary-black rounded p-2 placeholder-style"
             placeholder="Enter your email or username"
           />
         </div>
@@ -29,7 +30,7 @@ function App() {
           </div>
           <div className="relative w-full">
             <input
-              className="bg-transparent border border-border-secondary-black rounded p-2 w-full placeholder-style"
+              className="bg-transparent border-[1.5px] border-border-secondary-black rounded p-2 w-full placeholder-style"
               placeholder="Enter your password"
             />
             <div className="absolute right-2 top-3">
