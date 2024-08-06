@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-background-black-primary text-white; /* Apply Tailwind classes for background and text color */
+}
