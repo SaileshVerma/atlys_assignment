@@ -11,6 +11,34 @@ body {
     border-radius: 8px;
     background: linear-gradient(70deg, #969696, #343434);
   }
+  .thin-scrollbar::-webkit-scrollbar {
+    width: 4px; /* Width of the scrollbar */
+    height: 4px; /* Height of the scrollbar */
+  }
+
+  .thin-scrollbar::-webkit-scrollbar-track {
+    background: #c5c7ca; /* Background color of the track */
+    border-radius: 10px; /* Rounded corners */
+  }
+
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background: #35373b; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners */
+  }
+
+  .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #35373b; /* Color of the scrollbar thumb on hover */
+  }
+
+  /* Firefox scrollbar styles */
+  .thin-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #35373b #c5c7ca;
+  }
+
+  .thin-scrollbar:hover {
+    scrollbar-color: #35373b #c5c7ca;
+  }
 }
 
 @layer utilities {
