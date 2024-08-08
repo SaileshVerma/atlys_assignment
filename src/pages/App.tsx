@@ -8,6 +8,8 @@ import MoreHorizIcon from "../assets/icons/MoreHoriz";
 import { useState } from "react";
 import { CustomModal } from "../components/shared/CustomModal";
 import { LoginForm } from "../components/LoginForm/LoginForm";
+import { SignUpForm } from "../components/SignUpForm/SignUpForm";
+import { Login } from "./login/Login";
 //bg-black/80
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -53,6 +55,10 @@ function App() {
     </div>
   );
 }
+
+// function App() {
+//   return <Login />;
+// }
 
 const CreateCommentContainer = () => {
   return (
