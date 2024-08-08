@@ -7,20 +7,23 @@ import CommentIcon from "../assets/icons/CommentIcon";
 import MoreHorizIcon from "../assets/icons/MoreHoriz";
 import EyeIcon from "../assets/icons/EyeIcon";
 import CrossIcon from "../assets/icons/CrossIcon";
-
+import { Login } from "./login/Login";
+//bg-black/80
 function App() {
   return (
-    <div className="relative flex h-screen w-screen bg-black/80 thin-scrollbar flex-col items-center gap-6 text-white overflow-y-scroll">
-      <div className="absolute h-full w-full backdrop-blur-[2px]   items-center" />
-      <SignUpModal />
-      <div className="flex flex-col pt-6 gap-3 w-1/2 items-start justify-start">
-        <span className="text-grey-1 text-[28px] font-medium">Hello Jane</span>
-        <span className="text-subtext-grey max-w-[500px]">
+    <div className="relative flex h-screen w-screen bg-black/80  thin-scrollbar flex-col items-center gap-6 text-white overflow-y-scroll">
+      {/* <div className="absolute h-full w-full backdrop-blur-[2px] items-center" />
+      <SignUpModal /> */}
+      <div className="flex flex-col gap-3 w-full pt-4 px-4 md:px-0 md:pt-6 md:w-1/2  md:items-start justify-start">
+        <span className="text-grey-1 text-2xl md:text-[28px] font-medium">
+          Hello Jane
+        </span>
+        <span className="text-subtext-grey max-w-[500px] text-xs md:text-base">
           How are you doing today? Would you like to share something with the
           community 🤗
         </span>
       </div>
-      <div className="flex flex-col gap-2 w-1/2">
+      <div className="flex flex-col gap-3 p-4 md:p-0 w-full md:w-1/2">
         <CreateCommentContainer />
 
         {Posts.map((post, index) => {
@@ -158,12 +161,16 @@ const LoginModal = () => {
 const CreateCommentContainer = () => {
   return (
     <div className="flex flex-col py-6 px-5 gap-4 border-2 bg-background-black-secondary border-border-secondary-black items-start rounded-lg">
-      <span className="text-lg font-medium text-grey-1">Create post</span>
+      <span className="md:text-lg font-medium text-grey-1">Create post</span>
       <div className="flex items-center gap-4 w-full rounded-lg bg-background-black-ternary p-4">
-        <div className="bg-background-black-secondary p-3 rounded-full">💬</div>
-        <span className="text-subtext-grey">How are you feeling today?</span>
+        <div className="bg-background-black-secondary text-sm md:text-base p-2 md:p-3 rounded-full">
+          💬
+        </div>
+        <span className="text-subtext-grey text-sm md:text-base">
+          How are you feeling today?
+        </span>
       </div>
-      <button className="px-8 py-2 font-medium self-end bg-[#4A96FF] rounded">
+      <button className="px-6 md:px-8 py-2 text-sm md:text-base font-medium self-end bg-[#4A96FF] rounded">
         Post
       </button>
     </div>
@@ -183,10 +190,16 @@ const PostContainer = ({
     <div className="flex flex-col py-6 px-5 gap-4 border-2 bg-background-black-secondary border-border-secondary-black items-start rounded-lg">
       <div className="flex w-full items-center justify-between">
         <div className="flex gap-2 items-center">
-          <img src={profile} className="w-[44px] h-[44px]" alt={profile} />
+          <img
+            src={profile}
+            className="md:w-[44px] md:h-[44px] w-[33px] h-[33px]"
+            alt={profile}
+          />
           <div className="flex flex-col gap-0">
-            <div className="font-medium text-grey-1">{username}</div>
-            <p className="font-medium text-sm text-subtext-grey">
+            <div className="font-medium text-grey-1 text-sm md:text-base">
+              {username}
+            </div>
+            <p className="font-medium text-xs md:text-sm text-subtext-grey">
               {timeAgo} ago {isEdited && <span>• Edited</span>}
             </p>
           </div>
@@ -197,11 +210,13 @@ const PostContainer = ({
         <div className="bg-background-black-secondary p-3 rounded-full">
           {emoji}
         </div>
-        <span className="text-subtext-grey">{postContent}</span>
+        <span className="text-subtext-grey text-sm md:text-base">
+          {postContent}
+        </span>
       </div>
       <div className="flex gap-1.5 items-center justify-center">
         <CommentIcon />
-        <span className="font-medium text-sm text-subtext-grey">
+        <span className="font-medium text-xs md:text-sm text-subtext-grey">
           {commentsCounts} comments
         </span>
       </div>
