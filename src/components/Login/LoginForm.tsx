@@ -2,11 +2,79 @@ import { useState } from "react";
 
 import { useCustomRouter } from "../../router/router";
 import { LoginPasswordField } from "./PasswordField";
+import { AuthService } from "../../services/authService";
+import { UserInputField } from "./UserInputField";
+
+export interface ErrorState {
+  usernameError: string | null;
+  passwordError: string | null;
+}
 
 export const LoginForm = () => {
   const [password, setPassword] = useState("");
+  const [input, setInput] = useState("");
+  const [errorState, setErrorState] = useState<ErrorState | null>();
 
   const { currentRoute, navigateTo } = useCustomRouter();
+
+  function onLoginClickHandler() {
+    if (password.length < 1 && input.length < 1) {
+      setErrorState((prevState) => ({
+        usernameError: "Field cannot be empty",
+        passwordError: "Field cannot be empty",
+      }));
+
+      return;
+    }
+    if (input.length < 1) {
+      setErrorState((prevState) => ({
+        usernameError: "Field cannot be empty",
+        passwordError: null,
+      }));
+
+      return;
+    }
+    if (password.length < 1) {
+      setErrorState((prevState) => ({
+        usernameError: null,
+        passwordError: "Field cannot be empty",
+      }));
+
+      return;
+    }
+
+    if (input.length < 1) {
+      setErrorState((prevState) => ({
+        usernameError: "Field cannot be empty",
+        passwordError: null,
+      }));
+
+      return;
+    }
+
+    let authService = new AuthService();
+
+    let userStatus = authService.login({ username: input, password });
+
+    if (
+      userStatus.usernameError !== undefined ||
+      userStatus.passwordError !== undefined
+    ) {
+      setErrorState((prevState) => ({
+        ...prevState,
+        usernameError:
+          userStatus.usernameError !== undefined
+            ? userStatus.usernameError
+            : null,
+        passwordError:
+          userStatus.passwordError !== undefined
+            ? userStatus.passwordError
+            : null,
+      }));
+
+      return;
+    }
+  }
 
   return (
     <div className="flex flex-col rounded-lg gap-4 items-center justify-center bg-background-black-secondary w-full h-full px-6 py-8">
@@ -22,9 +90,11 @@ export const LoginForm = () => {
         <span className="text-grey-1 text-xs md:text-sm font-medium">
           Email or Username
         </span>
-        <input
-          className="bg-transparent border-[1.5px] border-border-secondary-black rounded p-2 placeholder-style"
-          placeholder="Enter your email or username"
+        <UserInputField
+          input={input}
+          setInput={setInput}
+          errors={errorState}
+          setErrorState={setErrorState}
         />
       </div>
       <div className="flex flex-col self-start gap-2 w-full">
@@ -40,10 +110,15 @@ export const LoginForm = () => {
         <LoginPasswordField
           password={password}
           setPasswordValue={setPassword}
+          errors={errorState}
+          setErrorState={setErrorState}
         />
       </div>
 
-      <button className="w-full text-xs md:text-base p-1 md:p-2 font-medium bg-[#4A96FF] rounded">
+      <button
+        className="w-full text-xs md:text-base p-1 md:p-2 font-medium bg-[#4A96FF] rounded"
+        onClick={onLoginClickHandler}
+      >
         Login now
       </button>
       <div className="flex self-start gap-1 text-xs md:text-sm text-grey-1 font-medium">
