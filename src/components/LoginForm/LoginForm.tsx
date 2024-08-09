@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import EyeIcon from "../../assets/icons/EyeIcon";
+import { useCustomRouter } from "../../router/router";
 
 export const LoginForm = () => {
   const [password, setPassword] = useState("");
+
+  const { currentRoute, navigateTo } = useCustomRouter();
 
   return (
     <div className="flex flex-col rounded-lg gap-4 items-center justify-center bg-background-black-secondary w-full h-full px-6 py-8">
@@ -28,7 +31,7 @@ export const LoginForm = () => {
           <span className="text-grey-1 text-xs md:text-sm font-medium">
             Password
           </span>
-          <span className="text-grey-1 text-xs font-medium">
+          <span className="text-grey-1 text-xs font-medium cursor-pointer">
             Forgot password?
           </span>
         </div>
@@ -44,7 +47,13 @@ export const LoginForm = () => {
       </button>
       <div className="flex self-start gap-1 text-xs md:text-sm text-grey-1 font-medium">
         <span className="text-[#7F8084]">Not registered yet? </span>
-        <button>Register →</button>
+        <button
+          onClick={() => {
+            navigateTo("/signup");
+          }}
+        >
+          Register →
+        </button>
       </div>
     </div>
   );
