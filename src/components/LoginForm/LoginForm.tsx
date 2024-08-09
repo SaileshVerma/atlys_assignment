@@ -1,6 +1,9 @@
+import { useEffect, useRef, useState } from "react";
 import EyeIcon from "../../assets/icons/EyeIcon";
 
 export const LoginForm = () => {
+  const [password, setPassword] = useState("");
+
   return (
     <div className="flex flex-col rounded-lg gap-4 items-center justify-center bg-background-black-secondary w-full h-full px-6 py-8">
       <div className="flex flex-col gap-1 items-center">
@@ -29,15 +32,11 @@ export const LoginForm = () => {
             Forgot password?
           </span>
         </div>
-        <div className="relative w-full">
-          <input
-            className="bg-transparent border-[1.5px] border-border-secondary-black rounded p-2 w-full placeholder-style"
-            placeholder="Enter your password"
-          />
-          <div className="absolute right-2 top-3">
-            <EyeIcon />
-          </div>
-        </div>
+
+        <LoginPasswordField
+          password={password}
+          setPasswordValue={setPassword}
+        />
       </div>
 
       <button className="w-full text-xs md:text-base p-1 md:p-2 font-medium bg-[#4A96FF] rounded">
@@ -46,6 +45,50 @@ export const LoginForm = () => {
       <div className="flex self-start gap-1 text-xs md:text-sm text-grey-1 font-medium">
         <span className="text-[#7F8084]">Not registered yet? </span>
         <button>Register →</button>
+      </div>
+    </div>
+  );
+};
+
+const LoginPasswordField = ({
+  password,
+  setPasswordValue,
+}: {
+  password: string;
+  setPasswordValue: (val: string) => void;
+}) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  function onChangePasswordHandler(event: React.ChangeEvent<HTMLInputElement>) {
+    const text = event.target.value;
+
+    setPasswordValue(text);
+  }
+
+  function displayPassword() {
+    setTimeout(() => {
+      setShowPassword(false);
+    }, 400);
+
+    setShowPassword(true);
+  }
+
+  return (
+    <div className="relative w-full">
+      <input
+        type={showPassword ? "text" : "password"}
+        className="bg-transparent border-[1.5px] border-border-secondary-black rounded p-2 w-full placeholder-style"
+        placeholder="Enter your password"
+        value={password}
+        onChange={onChangePasswordHandler}
+      />
+      <div
+        className="absolute right-2 top-3 cursor-pointer"
+        onClick={() => {
+          displayPassword();
+        }}
+      >
+        <EyeIcon />
       </div>
     </div>
   );
