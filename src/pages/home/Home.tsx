@@ -10,8 +10,11 @@ export function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(true);
 
   return (
-    <div className="relative flex h-screen w-screen   thin-scrollbar flex-col items-center gap-6 text-white overflow-y-scroll">
-      <div className="absolute h-full w-full backdrop-blur-[2px] items-center" />
+    <div
+      className={`relative flex h-screen w-screen thin-scrollbar flex-col overflow-x-hidden items-center gap-6 text-white  ${
+        isModalOpen ? "overflow-hidden" : "overflow-y-scroll"
+      } `}
+    >
       <CustomModal
         isOpen={isModalOpen}
         onClose={() => {
@@ -30,7 +33,7 @@ export function HomePage() {
         </span>
       </div>
       <div className="flex flex-col gap-3 p-4 md:p-0 w-full md:w-1/2">
-        <CreatePostContainer />
+        <CreatePostContainer setIsModalOpen={setIsModalOpen} />
 
         {Posts.map((post, index) => {
           return (
