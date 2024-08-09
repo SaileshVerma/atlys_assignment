@@ -74,6 +74,8 @@ export const LoginForm = () => {
 
       return;
     }
+
+    navigateTo("/");
   }
 
   return (
