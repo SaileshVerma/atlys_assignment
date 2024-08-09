@@ -1,8 +1,7 @@
-import EyeIcon from "../../assets/icons/EyeIcon";
 import Logo from "../../assets/logos/Logo";
-import { LoginForm } from "../../components/LoginForm/LoginForm";
+import { LoginForm } from "../../components/Login/LoginForm";
 
-export const Login = () => {
+export const LoginPage = () => {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center p-6 md:p-0 text-white gap-3 md:gap-10">
       <div className="">

@@ -1,8 +1,7 @@
 import Logo from "../../assets/logos/Logo";
-import { LoginForm } from "../../components/LoginForm/LoginForm";
-import { SignUpForm } from "../../components/SignUpForm/SignUpForm";
+import { SignUpForm } from "../../components/SignUp/SignUpForm";
 
-export const SignUp = () => {
+export const SignUpPage = () => {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center p-6 md:p-0 text-white gap-3 md:gap-10">
       <div className="">

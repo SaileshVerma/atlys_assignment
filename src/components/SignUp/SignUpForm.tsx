@@ -2,7 +2,6 @@ import EyeIcon from "../../assets/icons/EyeIcon";
 
 export const SignUpForm = () => {
   return (
-    // <div className="flex flex-col w-full">
     <div className="flex flex-col rounded-lg gap-4 items-center justify-center bg-background-black-secondary w-full h-full px-6 py-8">
       <div className="flex flex-col gap-1 items-center w-full ">
         <span className="text-secondary-text-black font-medium text-xs md:text-sm">
@@ -54,6 +53,5 @@ export const SignUpForm = () => {
         <button> Login →</button>
       </div>
     </div>
-    // </div>
   );
 };
