@@ -21,53 +21,82 @@ export const SignUpForm = () => {
   const { currentRoute, navigateTo } = useCustomRouter();
 
   function onLoginClickHandler() {
-    if (password.length < 1 && username.length < 1 && email.length < 1) {
-      setErrorState((prevState) => ({
-        usernameError: "Field cannot be empty",
-        passwordError: "Field cannot be empty",
-        emailError: "Field cannot be empty",
-      }));
+    // if (password.length < 1 && username.length < 1 && email.length < 1) {
+    //   setErrorState((prevState) => ({
+    //     usernameError: "Field cannot be empty",
+    //     passwordError: "Field cannot be empty",
+    //     emailError: "Field cannot be empty",
+    //   }));
 
-      return;
-    }
+    //   return;
+    // }
 
-    if (email.length > 1) {
-      if (!isValidEmail(email)) {
-        setErrorState((prevState) => ({
-          emailError: "Not a valid email",
-          usernameError: null,
-          passwordError: null,
-        }));
-      }
-      return;
-    }
+    // if (email.length > 1) {
+    //   if (!isValidEmail(email)) {
+    //     setErrorState((prevState) => ({
+    //       emailError: "Not a valid email",
+    //       usernameError: null,
+    //       passwordError: null,
+    //     }));
+    //   }
+    //   return;
+    // }
+
+    // if (username.length < 1) {
+    //   setErrorState((prevState) => ({
+    //     usernameError: "Field cannot be empty",
+    //     passwordError: prevState?.passwordError ?? null,
+    //     emailError: prevState?.emailError ?? null,
+    //   }));
+
+    //   return;
+    // }
+    // if (password.length < 1) {
+    //   setErrorState((prevState) => ({
+    //     usernameError: prevState?.usernameError ?? null,
+    //     passwordError: "Field cannot be empty",
+    //     emailError: prevState?.emailError ?? null,
+    //   }));
+
+    //   return;
+    // }
+
+    // if (email.length < 1) {
+    //   setErrorState((prevState) => ({
+    //     emailError: "Field cannot be empty",
+    //     usernameError: prevState?.usernameError ?? null,
+    //     passwordError: prevState?.passwordError ?? null,
+    //   }));
+
+    //   return;
+    // }
+
+    const errors: SignUpErrorState = {
+      usernameError: null,
+      passwordError: null,
+      emailError: null,
+    };
 
     if (username.length < 1) {
-      setErrorState((prevState) => ({
-        usernameError: "Field cannot be empty",
-        passwordError: prevState?.passwordError ?? null,
-        emailError: prevState?.emailError ?? null,
-      }));
-
-      return;
+      errors.usernameError = "Field cannot be empty";
     }
-    if (password.length < 1) {
-      setErrorState((prevState) => ({
-        usernameError: prevState?.usernameError ?? null,
-        passwordError: "Field cannot be empty",
-        emailError: prevState?.emailError ?? null,
-      }));
 
-      return;
+    if (password.length < 1) {
+      errors.passwordError = "Field cannot be empty";
     }
 
     if (email.length < 1) {
-      setErrorState((prevState) => ({
-        emailError: "Field cannot be empty",
-        usernameError: prevState?.usernameError ?? null,
-        passwordError: prevState?.passwordError ?? null,
-      }));
+      errors.emailError = "Field cannot be empty";
+    } else if (!isValidEmail(email)) {
+      errors.emailError = "Not a valid email";
+    }
 
+    setErrorState((prevState) => ({
+      ...prevState,
+      ...errors,
+    }));
+
+    if (errors.usernameError || errors.passwordError || errors.emailError) {
       return;
     }
 
@@ -97,7 +126,7 @@ export const SignUpForm = () => {
       return;
     }
 
-    // navigateTo("/");
+    navigateTo("/");
   }
 
   return (

@@ -69,16 +69,16 @@ export class AuthService {
           passwordError: "Password is incorrect",
         };
       }
-    }
+    } else {
+      user = userList.find((item) => item.email == username);
 
-    user = userList.find((item) => item.email == username);
-
-    if (user) {
-      if (user.password != password) {
-        return {
-          error: true,
-          passwordError: "Password is incorrect",
-        };
+      if (user) {
+        if (user.password != password) {
+          return {
+            error: true,
+            passwordError: "Password is incorrect",
+          };
+        }
       }
     }
 
@@ -126,7 +126,7 @@ export class AuthService {
     if (userList.some((user) => user.username == username)) {
       return {
         error: true,
-        emailError: "Username already in use",
+        usernameError: "Username already in use",
       };
     }
 
