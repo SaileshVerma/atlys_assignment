@@ -1,6 +1,10 @@
+import { User } from "../../types/user";
+
 export const CreatePostContainer = ({
+  currentUser,
   setIsModalOpen,
 }: {
+  currentUser?: User | undefined | null;
   setIsModalOpen: (val: boolean) => void;
 }) => {
   return (
@@ -16,7 +20,7 @@ export const CreatePostContainer = ({
       </div>
       <button
         className="px-6 md:px-8 py-2 text-sm md:text-base font-medium self-end bg-[#4A96FF] rounded cursor-pointer"
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => !currentUser && setIsModalOpen(true)}
       >
         Post
       </button>

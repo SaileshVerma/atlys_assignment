@@ -10,7 +10,7 @@ export function CustomModal({ isOpen, children, onClose }: CustomModalProps) {
   return (
     <>
       <div
-        className={`fixed backdrop-blur-[2px] bg-black/60 h-full w-full transition-opacity ease-in-out duration-500 delay-100  items-center ${
+        className={`fixed  backdrop-blur-[2px] bg-black/60 h-full w-full transition-opacity ease-in-out duration-500 delay-100  items-center ${
           isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"
         }`}
       />

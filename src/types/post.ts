@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Post {
   profile: string;
   timeAgo: string;

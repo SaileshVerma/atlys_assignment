@@ -1,26 +1,4 @@
-interface UserLoginStatus {
-  usernameError?: string | null;
-  passwordError?: string | null;
-  token?: string | null;
-  user?: User;
-  error: boolean;
-}
-
-interface UserSignupStatus {
-  usernameError?: string | null;
-  emailError?: string | null;
-  passwordError?: string | null;
-  token?: string | null;
-  user?: User;
-  error: boolean;
-}
-
-interface User {
-  username: string;
-  email: string;
-  password: string;
-  isAuthenticated: boolean;
-}
+import { User, UserLoginStatus, UserSignupStatus } from "../types/user";
 
 export class AuthService {
   isUserLoggedIn = function () {
@@ -33,7 +11,7 @@ export class AuthService {
     return false;
   };
 
-  getCurrentLoggedInUser = function (): User | undefined {
+  getCurrentLoggedInUser = function (): User | undefined | null {
     let stringifyUser = localStorage.getItem("currentUser");
 
     if (stringifyUser) {
