@@ -24,59 +24,14 @@ export const SignUpForm = ({
   const [username, setUsername] = useState("");
   const [errorState, setErrorState] = useState<SignUpErrorState | null>();
 
-  const { currentRoute, navigateTo } = useCustomRouter();
+  function clearFields() {
+    setPassword("");
+    setEmail("");
+    setUsername("");
+    setErrorState(null);
+  }
 
   function onLoginClickHandler() {
-    // if (password.length < 1 && username.length < 1 && email.length < 1) {
-    //   setErrorState((prevState) => ({
-    //     usernameError: "Field cannot be empty",
-    //     passwordError: "Field cannot be empty",
-    //     emailError: "Field cannot be empty",
-    //   }));
-
-    //   return;
-    // }
-
-    // if (email.length > 1) {
-    //   if (!isValidEmail(email)) {
-    //     setErrorState((prevState) => ({
-    //       emailError: "Not a valid email",
-    //       usernameError: null,
-    //       passwordError: null,
-    //     }));
-    //   }
-    //   return;
-    // }
-
-    // if (username.length < 1) {
-    //   setErrorState((prevState) => ({
-    //     usernameError: "Field cannot be empty",
-    //     passwordError: prevState?.passwordError ?? null,
-    //     emailError: prevState?.emailError ?? null,
-    //   }));
-
-    //   return;
-    // }
-    // if (password.length < 1) {
-    //   setErrorState((prevState) => ({
-    //     usernameError: prevState?.usernameError ?? null,
-    //     passwordError: "Field cannot be empty",
-    //     emailError: prevState?.emailError ?? null,
-    //   }));
-
-    //   return;
-    // }
-
-    // if (email.length < 1) {
-    //   setErrorState((prevState) => ({
-    //     emailError: "Field cannot be empty",
-    //     usernameError: prevState?.usernameError ?? null,
-    //     passwordError: prevState?.passwordError ?? null,
-    //   }));
-
-    //   return;
-    // }
-
     const errors: SignUpErrorState = {
       usernameError: null,
       passwordError: null,
@@ -133,6 +88,7 @@ export const SignUpForm = ({
     }
 
     onSignUpClick();
+    clearFields();
   }
 
   return (

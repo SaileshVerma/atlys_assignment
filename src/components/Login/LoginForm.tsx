@@ -21,7 +21,11 @@ export const LoginForm = ({
   const [input, setInput] = useState("");
   const [errorState, setErrorState] = useState<ErrorState | null>();
 
-  const { currentRoute, navigateTo } = useCustomRouter();
+  function clearFields() {
+    setPassword("");
+    setInput("");
+    setErrorState(null);
+  }
 
   function onLoginClickHandler() {
     if (password.length < 1 && input.length < 1) {
@@ -82,6 +86,7 @@ export const LoginForm = ({
     }
 
     onLoginClick();
+    clearFields();
   }
 
   return (
