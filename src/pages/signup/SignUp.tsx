@@ -1,6 +1,7 @@
 import Logo from "../../assets/logos/Logo";
 import { SignUpForm } from "../../components/SignUp/SignUpForm";
 import { useCustomRouter } from "../../router/router";
+import { Routes } from "../../utils/constants";
 
 export const SignUpPage = () => {
   const { navigateTo } = useCustomRouter();
@@ -12,8 +13,8 @@ export const SignUpPage = () => {
       </div>
       <div className="flex-col rounded-lg  gradient-border  items-center justify-center bg-background-black-secondary w-full md:w-1/3 p-0.5">
         <SignUpForm
-          onRegisterClick={() => navigateTo("/login")}
-          onSignUpClick={() => navigateTo("/")}
+          onRegisterClick={() => navigateTo(Routes.LOGIN)}
+          onSignUpClick={() => navigateTo(Routes.HOME)}
         />
       </div>
     </div>

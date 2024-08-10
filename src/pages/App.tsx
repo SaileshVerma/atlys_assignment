@@ -5,6 +5,7 @@ import { HomePage } from "./home/Home";
 import { FallbackPage } from "./fallback/FallBack";
 import { useEffect } from "react";
 import { AuthService } from "../services/authService";
+import { Routes } from "../utils/constants";
 //bg-black/80
 
 function App() {
@@ -15,18 +16,18 @@ function App() {
       const authService = new AuthService();
       const getCurrentUser = authService.getCurrentLoggedInUser();
       if (!getCurrentUser) {
-        navigateTo("/login");
+        navigateTo(Routes.LOGIN);
       }
     }
   }, []);
 
   const currentPage = () => {
     switch (currentRoute) {
-      case "/":
+      case Routes.HOME:
         return <HomePage />;
-      case "/login":
+      case Routes.LOGIN:
         return <LoginPage />;
-      case "/signup":
+      case Routes.SIGNUP:
         return <SignUpPage />;
       default:
         return <FallbackPage />;

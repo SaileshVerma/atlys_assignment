@@ -6,6 +6,7 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
+import { Routes } from "../utils/constants";
 
 interface RouterContextType {
   currentRoute: string;
@@ -14,7 +15,7 @@ interface RouterContextType {
 
 // Create the context with a default value
 const RouterContext = createContext<RouterContextType>({
-  currentRoute: "/login",
+  currentRoute: Routes.LOGIN,
   navigateTo: () => {},
 });
 

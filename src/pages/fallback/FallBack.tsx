@@ -1,4 +1,5 @@
 import { useCustomRouter } from "../../router/router";
+import { Routes } from "../../utils/constants";
 
 export const FallbackPage = () => {
   const { navigateTo } = useCustomRouter();
@@ -16,7 +17,7 @@ export const FallbackPage = () => {
         </span>
         <button
           className="w-1/3 text-lg md:text-xl p-1 md:p-2 font-medium bg-[#4A96FF] rounded"
-          onClick={() => navigateTo("/login")}
+          onClick={() => navigateTo(Routes.LOGIN)}
         >
           Go Back →
         </button>
