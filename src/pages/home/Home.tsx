@@ -8,18 +8,24 @@ import { Posts } from "../../utils/tempData";
 import { User } from "../../types/user";
 import { AuthService } from "../../services/authService";
 import LogoutIcon from "../../assets/icons/LogoutIcon";
+import { SignUpForm } from "../../components/SignUp/SignUpForm";
 
 export function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<User | null | undefined>();
+  const [showLoginModal, setShowLoginModal] = useState(true);
 
   useEffect(() => {
+    setCurrentUserOnAction();
+  }, []);
+
+  function setCurrentUserOnAction() {
     const authService = new AuthService();
     const getCurrentUser = authService.getCurrentLoggedInUser();
     if (getCurrentUser) {
       setCurrentUser(getCurrentUser);
     }
-  }, []);
+  }
 
   function logoutHandler() {
     const authService = new AuthService();
@@ -39,12 +45,27 @@ export function HomePage() {
           setIsModalOpen(false);
         }}
       >
-        <LoginForm
-          onRegisterClick={() => {}}
-          onLoginClick={() => {
-            setIsModalOpen(false);
-          }}
-        />
+        {showLoginModal ? (
+          <LoginForm
+            onRegisterClick={() => {
+              setShowLoginModal(false);
+            }}
+            onLoginClick={() => {
+              setCurrentUserOnAction();
+              setIsModalOpen(false);
+            }}
+          />
+        ) : (
+          <SignUpForm
+            onRegisterClick={() => {
+              setCurrentUserOnAction();
+              setShowLoginModal(true);
+            }}
+            onSignUpClick={() => {
+              setIsModalOpen(false);
+            }}
+          />
+        )}
       </CustomModal>
       <div className="flex flex-col gap-3 w-full pt-4 px-4 md:px-0 md:pt-8 md:w-1/2  md:items-start justify-start">
         <span className="text-grey-1 text-2xl md:text-[28px] font-medium">
