@@ -3,10 +3,22 @@ import { useCustomRouter } from "../router/router";
 import { SignUpPage } from "./signup/SignUp";
 import { HomePage } from "./home/Home";
 import { FallbackPage } from "./fallback/FallBack";
+import { useEffect } from "react";
+import { AuthService } from "../services/authService";
 //bg-black/80
 
 function App() {
-  const { currentRoute } = useCustomRouter();
+  const { currentRoute, navigateTo } = useCustomRouter();
+
+  useEffect(() => {
+    if (window.location.pathname === "/") {
+      const authService = new AuthService();
+      const getCurrentUser = authService.getCurrentLoggedInUser();
+      if (!getCurrentUser) {
+        navigateTo("/login");
+      }
+    }
+  }, []);
 
   const currentPage = () => {
     switch (currentRoute) {
