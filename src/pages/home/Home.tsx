@@ -58,10 +58,10 @@ export function HomePage() {
         ) : (
           <SignUpForm
             onRegisterClick={() => {
-              setCurrentUserOnAction();
               setShowLoginModal(true);
             }}
             onSignUpClick={() => {
+              setCurrentUserOnAction();
               setIsModalOpen(false);
             }}
           />

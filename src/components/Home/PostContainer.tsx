@@ -30,7 +30,12 @@ export const PostContainer = ({
             </p>
           </div>
         </div>
-        <MoreHorizIcon />
+        <div
+          className="cursor-pointer"
+          onClick={() => !currentUser && setIsModalOpen(true)}
+        >
+          <MoreHorizIcon />
+        </div>
       </div>
       <div className="flex items-center gap-4 w-full rounded-lg bg-background-black-ternary p-4">
         <div className="bg-background-black-secondary p-3 rounded-full">

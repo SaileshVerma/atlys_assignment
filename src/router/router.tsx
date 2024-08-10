@@ -21,17 +21,17 @@ const RouterContext = createContext<RouterContextType>({
 export function RouterProvider({ children }: { children: ReactNode }) {
   const [currentRoute, setCurrentRoute] = useState(window.location.pathname);
 
-  // useEffect(() => {
-  //   const handlePopState = () => {
-  //     setCurrentRoute(window.location.pathname);
-  //   };
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentRoute(window.location.pathname);
+    };
 
-  //   window.addEventListener("popstate", handlePopState);
+    window.addEventListener("popstate", handlePopState);
 
-  //   return () => {
-  //     window.removeEventListener("popstate", handlePopState);
-  //   };
-  // }, []);
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
 
   const navigateTo = (path: string) => {
     window.history.pushState({}, "", path);
