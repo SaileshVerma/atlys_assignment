@@ -6,7 +6,6 @@ import { FallbackPage } from "./fallback/FallBack";
 import { useEffect } from "react";
 import { AuthService } from "../services/authService";
 import { Routes } from "../utils/constants";
-//bg-black/80
 
 function App() {
   const { currentRoute, navigateTo } = useCustomRouter();

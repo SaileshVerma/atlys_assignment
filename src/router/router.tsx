@@ -1,4 +1,3 @@
-// RouterContext.js
 import React, {
   createContext,
   useState,
@@ -13,7 +12,6 @@ interface RouterContextType {
   navigateTo: (path: string) => void;
 }
 
-// Create the context with a default value
 const RouterContext = createContext<RouterContextType>({
   currentRoute: Routes.LOGIN,
   navigateTo: () => {},
