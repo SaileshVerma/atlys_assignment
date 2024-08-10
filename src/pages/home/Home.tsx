@@ -39,7 +39,12 @@ export function HomePage() {
           setIsModalOpen(false);
         }}
       >
-        <LoginForm />
+        <LoginForm
+          onRegisterClick={() => {}}
+          onLoginClick={() => {
+            setIsModalOpen(false);
+          }}
+        />
       </CustomModal>
       <div className="flex flex-col gap-3 w-full pt-4 px-4 md:px-0 md:pt-8 md:w-1/2  md:items-start justify-start">
         <span className="text-grey-1 text-2xl md:text-[28px] font-medium">

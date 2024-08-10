@@ -10,7 +10,13 @@ export interface ErrorState {
   passwordError: string | null;
 }
 
-export const LoginForm = () => {
+export const LoginForm = ({
+  onLoginClick,
+  onRegisterClick,
+}: {
+  onLoginClick: () => void;
+  onRegisterClick: () => void;
+}) => {
   const [password, setPassword] = useState("");
   const [input, setInput] = useState("");
   const [errorState, setErrorState] = useState<ErrorState | null>();
@@ -75,7 +81,7 @@ export const LoginForm = () => {
       return;
     }
 
-    navigateTo("/");
+    onLoginClick();
   }
 
   return (
@@ -127,7 +133,7 @@ export const LoginForm = () => {
         <span className="text-[#7F8084]">Not registered yet? </span>
         <button
           onClick={() => {
-            navigateTo("/signup");
+            onRegisterClick();
           }}
         >
           Register →

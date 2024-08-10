@@ -12,7 +12,13 @@ export interface SignUpErrorState {
   emailError: string | null;
 }
 
-export const SignUpForm = () => {
+export const SignUpForm = ({
+  onSignUpClick,
+  onRegisterClick,
+}: {
+  onSignUpClick: () => void;
+  onRegisterClick: () => void;
+}) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -126,7 +132,7 @@ export const SignUpForm = () => {
       return;
     }
 
-    navigateTo("/");
+    onSignUpClick();
   }
 
   return (
@@ -182,7 +188,7 @@ export const SignUpForm = () => {
       </button>
       <div className="flex self-start gap-1 text-xs md:text-sm text-grey-1 font-medium">
         <span className="text-[#7F8084]">Already have an account? </span>
-        <button> Login →</button>
+        <button onClick={() => onRegisterClick()}> Login →</button>
       </div>
     </div>
   );
