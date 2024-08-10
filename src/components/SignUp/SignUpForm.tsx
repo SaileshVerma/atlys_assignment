@@ -2,7 +2,6 @@ import { useState } from "react";
 import { EmailInputField } from "./EmailInputField";
 import { PasswordField } from "./PasswordField";
 import { UserNameField } from "./UsernameField";
-import { useCustomRouter } from "../../router/router";
 import { AuthService } from "../../services/authService";
 import { isValidEmail } from "../../utils/helpers";
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { useCustomRouter } from "../../router/router";
 import { LoginPasswordField } from "./PasswordField";
 import { AuthService } from "../../services/authService";
 import { UserInputField } from "./UserInputField";

@@ -1,7 +1,7 @@
 import { useCustomRouter } from "../../router/router";
 
 export const FallbackPage = () => {
-  const { currentRoute, navigateTo } = useCustomRouter();
+  const { navigateTo } = useCustomRouter();
 
   return (
     <div

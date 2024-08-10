@@ -6,7 +6,7 @@ import { FallbackPage } from "./fallback/FallBack";
 //bg-black/80
 
 function App() {
-  const { currentRoute, navigateTo } = useCustomRouter();
+  const { currentRoute } = useCustomRouter();
 
   const currentPage = () => {
     switch (currentRoute) {

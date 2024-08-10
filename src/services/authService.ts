@@ -40,7 +40,6 @@ export class AuthService {
     user = userList.find((item) => item.username == username);
 
     if (user) {
-      //check for the password
       if (user.password != password) {
         return {
           error: true,
